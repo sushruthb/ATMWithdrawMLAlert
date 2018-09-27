@@ -49,10 +49,7 @@ csvData = rawData.map(lambda x: x.split(","))
 # Convert these lists to LabeledPoints
 trainingData = csvData.map(createLabeledPoints)
 
-# Create a test candidate, with 10 years of experience, currently employed,
-# 3 previous employers, a BS degree, but from a non-top-tier school where
-# he or she did not do an internship. You could of course load up a whole
-# huge RDD of test candidates from disk, too.
+
 testCandidates = [ array([2,1])]
 testData = sc.parallelize(testCandidates)
 
@@ -61,7 +58,7 @@ model = DecisionTree.trainClassifier(trainingData, numClasses=2,
                                      categoricalFeaturesInfo={0:3,1:2},
                                      impurity='gini', maxDepth=5, maxBins=32)
 
-# Now get predictions for our unknown candidates. (Note, you could separate
+# Now get predictions for our unknown . (Note, you could separate
 # the source data into a training set and a test set while tuning
 # parameters and measure accuracy as you go!)
 predictions = model.predict(testData)
